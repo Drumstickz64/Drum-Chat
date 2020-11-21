@@ -6,6 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Drum Chat</title>
 	<link rel="stylesheet" href="css/index.css">
+	<script defer="" src="js/index.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -20,10 +21,18 @@
 			</header>
 			
 			<div class="splitter">
-				<aside class="info"></aside>
+				<aside class="info hidden">info</aside>
 				<main class="chat-area">
-					<p class="chat-msg">Hi</p>
+					<p class="chat-msg">
+						<span class="sender">Fred: </span>
+						Hi
+					</p>
 					<p class="chat-msg chat-msg-self">hello</p>
+					
+					<form class="chat-bar">
+						<input type="text" name="msg" id="chat-input" autofocus="" value="" />
+						<button class="btn" type="submit">Send</button>
+					</form>
 				</main>
 			</div>
 		</div>
