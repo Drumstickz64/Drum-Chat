@@ -1,0 +1,75 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	--primary-clr: linear-gradient(25deg, #385dec 0%, #9f10e6 100%);
+	--bg-clr: #F3FAFF;
+	--chat-clr: #dddddd;
+	--surface-clr: #fff;
+	--text-clr: #000;
+	--heading-clr: #001939;
+	--shadow-sm: 0 0 3px rgba(0,0,0,0.1);
+	--shadow-lg: 0 0.5em 1em -0.125em rgba(0,0,0,0.1), 0 0 0 1px rgba(0,0,0,0.02);
+	font-size: 16px;
+	font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background: var(--bg-clr);
+	color: var(--text-clr);
+	height: 100vh;
+	overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+	font-weight: 700;
+	color: var(--heading-clr);
+}
+
+a {
+	text-decoration: none;
+}
+
+.container {
+	max-width: 75rem;
+	margin: 1.2rem auto;
+	padding: 0 1em;
+}
+
+.box {
+	display: flex;
+	flex-direction: column;
+	height: 85vh;
+	background: var(--surface-clr);
+	box-shadow: var(--shadow-lg);
+	overflow: hidden;
+}
+
+.header {
+	position: relative;
+	padding: 0.25em;
+	border-bottom: 2px solid gray;
+}
+
+.logo {
+	margin: 0;
+	text-align: center;
+	font-weight: 700;
+}
+
+
+.btn {
+	display: inline-block;
+	font-size: 0.875rem;
+	font-weight: 700;
+	padding: 0.75em 1.5em;
+	border: none;
+	background: var(--primary-clr);
+	color: white;
+	cursor: pointer;
+}
