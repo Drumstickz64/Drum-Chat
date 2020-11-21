@@ -7,9 +7,9 @@
 html {
 	--primary-clr: linear-gradient(25deg, #385dec 0%, #9f10e6 100%);
 	--bg-clr: #F3FAFF;
+	--chat-clr: #dddddd;
 	--surface-clr: #fff;
-	--chat-clr: rgba(238,238,238,0.7);
-	--text-clr: #555;
+	--text-clr: #000;
 	--heading-clr: #001939;
 	--shadow-lg: 0 0.5em 1em -0.125em rgba(0,0,0,0.1), 0 0 0 1px rgba(0,0,0,0.02);
 	--shadow-outline: 0 0 0 0.125em rgba(63,160,255,0.5);
@@ -79,4 +79,38 @@ h1, h2, h3, h4 {
 
 .hamburger div:nth-child(2) {
 	opacity: 0.5;
+}
+
+
+.info {
+	display: none;
+}
+
+.splitter {
+	display: flex;
+	flex-grow: 1;
+}
+
+.splitter > * {
+	flex-grow: 1;
+}
+
+.chat-area {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0.25em 1em;
+}
+
+.chat-msg {
+	margin: 0.25em 0;
+	padding: 0.375em 1em;
+	background: var(--chat-clr);
+	border-radius: 1em;
+}
+
+.chat-msg-self {
+	align-self: flex-end;
+	color: white;
+	background: var(--primary-clr);
 }
