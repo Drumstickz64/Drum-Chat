@@ -6,8 +6,8 @@ const PORT = 5000;
 
 const app = express();
 
-app.use(express.static("public"));
 app.use(morgan(PRODUCTION? "tiny" : "dev"));
+app.use(express.static("public"));
 
 
 app.listen(PORT, () => console.log("connected on port " + 5000));

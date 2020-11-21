@@ -7,8 +7,12 @@
 html {
 	--primary-clr: linear-gradient(25deg, #385dec 0%, #9f10e6 100%);
 	--bg-clr: #F3FAFF;
+	--surface-clr: #fff;
+	--chat-clr: rgba(238,238,238,0.7);
 	--text-clr: #555;
 	--heading-clr: #001939;
+	--shadow-lg: 0 0.5em 1em -0.125em rgba(0,0,0,0.1), 0 0 0 1px rgba(0,0,0,0.02);
+	--shadow-outline: 0 0 0 0.125em rgba(63,160,255,0.5);
 	font-size: 16px;
 	font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
 }
@@ -18,10 +22,61 @@ body {
 	padding: 0;
 	background: var(--bg-clr);
 	color: var(--text-clr);
-	min-height: 100vh;
+	height: 100vh;
+	overflow-x: hidden;
 }
 
 h1, h2, h3, h4 {
 	font-weight: 700;
 	color: var(--heading-clr);
+}
+
+.container {
+	max-width: 75rem;
+	margin: 1.2rem auto;
+	padding: 0 1em;
+}
+
+.box {
+	display: flex;
+	flex-direction: column;
+	height: 85vh;
+	background: var(--surface-clr);
+	box-shadow: var(--shadow-lg);
+}
+
+.header {
+	position: relative;
+	padding: 0.25em;
+	border-bottom: 2px solid gray;
+}
+
+.logo {
+	margin: 0;
+	text-align: center;
+}
+
+.hamburger {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	position: absolute;
+	top: 50%;
+	right: 0;
+	transform: translate(-50%, -50%);
+	width: 2em;
+	height: 1.5em;
+	padding: 0;
+	background: none;
+	border: none;
+}
+
+.hamburger div {
+	width: 100%;
+	height: 10%;
+	background: var(--heading-clr);
+}
+
+.hamburger div:nth-child(2) {
+	opacity: 0.5;
 }
