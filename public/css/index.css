@@ -1,5 +1,6 @@
 .btns {
 	display: flex;
 	justify-content: space-around;
-	margin-top: 2em;
+	align-items: center;
+	height: 100%;
 }

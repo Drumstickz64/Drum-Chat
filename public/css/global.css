@@ -57,9 +57,12 @@ a {
 }
 
 .logo {
-	margin: 0;
-	text-align: center;
+	display: block;
+	font-size: 2.5rem;
 	font-weight: 700;
+	text-align: center;
+	margin: 0;
+	color: var(--primary-clr);
 }
 
 
