@@ -53,6 +53,14 @@
 	background: var(--primary-clr);
 }
 
+.system-msg {
+	font-weight: 700;
+	font-style: italic;
+	margin: 0.25em 0;
+	padding: 0.375em 1em;
+	color: var(--heading-clr);
+}
+
 .sender {
 	font-weight: 700;
 	color: var(--heading-clr);

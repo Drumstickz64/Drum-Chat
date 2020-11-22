@@ -17,7 +17,7 @@ hamburgerEl.addEventListener("click", () => {
 });
 
 const socket = io();
-socket.emit("join-room", roomKey);
+socket.emit("join-room", { userName, roomKey });
 
 const makeChatMsgEl = (msg, sender) => {
 	const chatMsgEl = document.createElement("p");
@@ -36,6 +36,13 @@ const makeChatMsgEl = (msg, sender) => {
 	chatAreaEl.appendChild(chatMsgEl);
 };
 
+const makeSystemMsgEl = msg => {
+	const systemMsgEl = document.createElement("p");
+	systemMsgEl.classList.add("system-msg");
+	systemMsgEl.textContent = msg;
+	chatAreaEl.appendChild(systemMsgEl);
+};
+
 chatBarEl.addEventListener("submit", e => {
 	e.preventDefault();
 	let msg = chatInputEl.value;
@@ -45,6 +52,9 @@ chatBarEl.addEventListener("submit", e => {
 });
 
 socket.on("chat-msg", ({ msg, sender }) => {
-	alert("stranger!")
 	makeChatMsgEl(msg, sender);
+});
+
+socket.on("system-msg", msg => {
+	makeSystemMsgEl(msg);
 });
