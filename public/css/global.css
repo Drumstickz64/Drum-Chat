@@ -18,11 +18,14 @@ html {
 }
 
 body {
+	display: flex;
+	flex-direction: column;
 	margin: 0;
 	padding: 0;
 	background: var(--bg-clr);
 	color: var(--text-clr);
 	height: 100vh;
+	min-height: 0;
 	overflow-x: hidden;
 	line-height: 1.5;
 }
@@ -38,6 +41,9 @@ a {
 }
 
 .container {
+	display: flex;
+	flex-direction: column;
+	width: 95%;
 	max-width: 75rem;
 	margin: 1.2rem auto;
 	padding: 0 1em;
@@ -46,7 +52,7 @@ a {
 .box {
 	display: flex;
 	flex-direction: column;
-	height: 85vh;
+	height: 640px;
 	background: var(--surface-clr);
 	box-shadow: var(--shadow-lg);
 	overflow: hidden;
@@ -54,6 +60,8 @@ a {
 
 .header {
 	position: relative;
+	height: 5rem;
+	flex-shrink: 1;
 	padding: 0.25em;
 	border-bottom: 2px solid gray;
 }

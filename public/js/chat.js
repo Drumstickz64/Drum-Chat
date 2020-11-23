@@ -1,5 +1,6 @@
 const hamburgerEl = document.querySelector(".hamburger");
 const chatAreaEl = document.querySelector(".chat-area");
+const chatFeedEl = document.querySelector(".chat-feed");
 const infoEl = document.querySelector(".info");
 const chatBarEl = document.querySelector(".chat-bar");
 const chatInputEl = document.getElementById("chat-input");
@@ -38,14 +39,14 @@ const makeChatMsgEl = (msg, sender) => {
 	}
 	
 	chatMsgEl.appendChild(document.createTextNode(msg));
-	chatAreaEl.appendChild(chatMsgEl);
+	chatFeedEl.appendChild(chatMsgEl);
 };
 
 const makeSystemMsgEl = msg => {
 	const systemMsgEl = document.createElement("p");
 	systemMsgEl.classList.add("system-msg");
 	systemMsgEl.textContent = msg;
-	chatAreaEl.appendChild(systemMsgEl);
+	chatFeedEl.appendChild(systemMsgEl);
 };
 
 chatBarEl.addEventListener("submit", e => {
