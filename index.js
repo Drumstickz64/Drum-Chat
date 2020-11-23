@@ -16,7 +16,7 @@ const io = socketio(server);
 // middleware
 app.use(morgan(PRODUCTION? "tiny" : "dev"));
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static("public"));
+app.use(express.static("static"));
 
 io.on("connection", socket => {
 	socket.on("join-room", ({ userName, roomKey }) => {
@@ -87,7 +87,15 @@ app.post("/join-room", (req, res) => {
 });
 
 app.get("/chat", (req, res) => {
-	res.sendFile(path.resolve("views", "chat.html"));
+	if (
+		req.query.name &&
+		req.query["room-name"] &&
+		req.query["room-key"]
+	) {
+		res.sendFile(path.resolve("views", "chat.html"));
+	} else {
+		res.status(404).redirect("/");
+	}
 });
 
 // 404 response
