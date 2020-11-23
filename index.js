@@ -2,6 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const socketio = require("socket.io");
 const path = require("path");
+const url = require("url");
 
 // constants
 const PRODUCTION = process.env.NODE_ENV === "production";
@@ -67,7 +68,14 @@ app.post("/create-room", (req, res) => {
 	const roomKey = Math.floor(date * randomNum);
 	ROOMS[roomKey] = { name: req.body["room-name"], members: [] };
 	
-	res.status(201).redirect(`/chat?name=${name}&room-name=${roomName}&room-key=${roomKey}`);
+	res.status(201).redirect(url.format({
+		pathname: "/chat",
+		query: {
+			name,
+			"room-name": roomName,
+			"room-key": roomKey
+		}
+	}));
 });
 
 app.get("/join-room", (req, res) => {
@@ -75,23 +83,30 @@ app.get("/join-room", (req, res) => {
 });
 
 app.post("/join-room", (req, res) => {
-	const name = req.body.name;
 	const roomKey = req.body["room-key"];
 	const room = ROOMS[roomKey];
+	if (!room) { res.status(404).redirect("/") }
 	
-	if (!room) { res.redirect("/") }
+	const name = req.body.name;
 	
-	const roomName = ROOMS[roomKey].name;
-	
-	res.redirect(`/chat?name=${name}&room-name=${roomName}&room-key=${roomKey}`);
+	res.redirect(url.format({
+		pathname: "/chat",
+		query: {
+			name,
+			"room-name": roomName,
+			"room-key": roomKey
+		}
+	}));
 });
 
 app.get("/chat", (req, res) => {
-	if (
-		req.query.name &&
-		req.query["room-name"] &&
-		req.query["room-key"]
-	) {
+	const name = req.query.name;
+	const roomName = req.query["room-name"];
+	const roomKey = req.query["room-key"];
+	
+	if (name, roomName, roomKey) {
+		const room = ROOMS[roomKey];
+		if (!room) { res.status(404).redirect("/") }
 		res.sendFile(path.resolve("views", "chat.html"));
 	} else {
 		res.status(404).redirect("/");

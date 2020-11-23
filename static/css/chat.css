@@ -35,6 +35,11 @@
 	padding: 0.25em 1em;
 }
 
+.info {
+	flex-basis: 25%;
+	overflow: auto;
+}
+
 .info .content > * {
 	display: inline-block;
 }
@@ -50,7 +55,7 @@
 .chat-area {
 	display: flex;
 	flex-direction: column;
-	flex-grow: 1;
+	flex-basis: 75%;
 	position: relative;
 	overflow: hidden;
 }
@@ -115,4 +120,18 @@
 
 .hidden {
 	display: none;
+}
+
+@media only screen and (min-width: 62rem) {
+	.hamburger {
+		display: none;
+	}
+	
+	.hidden {
+		display: block;
+	}
+	
+	.chat-area {
+		border-left: 2px solid gray;
+	}
 }

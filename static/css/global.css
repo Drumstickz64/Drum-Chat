@@ -46,8 +46,8 @@ a {
 	justify-content: center;
 	width: 95%;
 	max-width: 75rem;
-	height: 85vh;
-	min-height: 0;
+	min-height: 85vh;
+	height: 350px;
 	margin: 1.2rem auto;
 	padding: 0 1em;
 }
