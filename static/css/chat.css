@@ -17,6 +17,7 @@
 	width: 100%;
 	height: 10%;
 	background: var(--heading-clr);
+	border-radius: 0.8rem;
 }
 
 .hamburger div:nth-child(2) {
