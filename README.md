@@ -1,5 +1,5 @@
 # DrumChat
-a basic chat app
+a real time chat app
 
 ## Built With
 **express:** the backend framework

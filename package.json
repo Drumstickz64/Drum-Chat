@@ -3,6 +3,10 @@
 	"version": "1.0.0",
 	"description": "A real time chat app with express and socket.io",
 	"main": "index.js",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Drumstickz64/Drum-Chat.git"
+	},
 	"scripts": {
 		"dev": "nodemon -e js,json,html,css",
 		"start": "export NODE_ENV=production && node ."
