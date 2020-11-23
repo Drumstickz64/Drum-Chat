@@ -10,9 +10,13 @@ global.ROOMS = {};
 // setup
 const app = express();
 const server = app.listen(PORT, () => console.log("connected on port " + 5000));
+const loggingStream =
+	PRODUCTION
+	?require("fs").createWriteStream(path.resolve(__dirname, "chat.log"), { flags: "w" })
+	:process.stdout;
 
 // middleware
-app.use(morgan(PRODUCTION? "tiny" : "dev"));
+app.use(morgan(PRODUCTION? "tiny" : "dev", { stream: loggingStream }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("static"));
 
