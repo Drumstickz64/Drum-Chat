@@ -1,6 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const socketio = require("socket.io");
+const path = require("path");
 
 // constants
 const PRODUCTION = process.env.NODE_ENV === "production";
@@ -49,6 +50,14 @@ io.on("connection", socket => {
 	});
 });
 
+app.get("/", (req, res) => {
+	res.sendFile(path.resolve("views", "index.html"));
+});
+
+app.get("/create-room", (req, res) => {
+	res.sendFile(path.resolve("views", "create-room.html"));
+});
+
 app.post("/create-room", (req, res) => {
 	const name = req.body.name;
 	const roomName = req.body["room-name"];
@@ -58,13 +67,30 @@ app.post("/create-room", (req, res) => {
 	const roomKey = Math.floor(date * randomNum);
 	ROOMS[roomKey] = { name: req.body["room-name"], members: [] };
 	
-	res.redirect(`/chat.html?name=${name}&room-name=${roomName}&room-key=${roomKey}`);
+	res.status(201).redirect(`/chat?name=${name}&room-name=${roomName}&room-key=${roomKey}`);
+});
+
+app.get("/join-room", (req, res) => {
+	res.sendFile(path.resolve("views", "join-room.html"));
 });
 
 app.post("/join-room", (req, res) => {
 	const name = req.body.name;
 	const roomKey = req.body["room-key"];
+	const room = ROOMS[roomKey];
+	
+	if (!room) { res.redirect("/") }
+	
 	const roomName = ROOMS[roomKey].name;
 	
-	res.redirect(`/chat.html?name=${name}&room-name=${roomName}&room-key=${roomKey}`);
+	res.redirect(`/chat?name=${name}&room-name=${roomName}&room-key=${roomKey}`);
+});
+
+app.get("/chat", (req, res) => {
+	res.sendFile(path.resolve("views", "chat.html"));
+});
+
+// 404 response
+app.use((req, res) => {
+	res.end("404 couldn't find resource");
 });

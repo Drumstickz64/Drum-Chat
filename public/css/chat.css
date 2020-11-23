@@ -26,6 +26,7 @@
 .splitter {
 	display: flex;
 	flex-grow: 1;
+	height: 75vh;
 	overflow: hidden;
 }
 
