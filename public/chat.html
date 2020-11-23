@@ -24,14 +24,19 @@
 			</header>
 			
 			<div class="splitter">
-				<aside class="info hidden">info</aside>
+				<aside class="info hidden">
+					<div class="content">
+						<h2>Room Name: </h2>
+						<p id="room-name"></p>
+					</div>
+					<div class="content">
+						<h2>Room Key: </h2>
+						<p id="room-key"></p>
+					</div>
+					<h2>members:</h2>
+					<ul id="members"></ul>
+				</aside>
 				<main class="chat-area">
-					<p class="chat-msg">
-						<span class="sender">Fred: </span>
-						Hi
-					</p>
-					<p class="chat-msg chat-msg-self">hello</p>
-					
 					<form class="chat-bar">
 						<input type="text" name="msg" id="chat-input" autocomplete="false" autofocus="" value="" />
 						<button class="btn" type="submit">Send</button>

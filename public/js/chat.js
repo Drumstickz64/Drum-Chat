@@ -3,6 +3,9 @@ const chatAreaEl = document.querySelector(".chat-area");
 const infoEl = document.querySelector(".info");
 const chatBarEl = document.querySelector(".chat-bar");
 const chatInputEl = document.getElementById("chat-input");
+const roomNameEl = document.getElementById("room-name");
+const roomKeyEl = document.getElementById("room-key");
+let memberListEl = document.getElementById("members");
 
 
 const urlParams = new URL(location.href).searchParams;
@@ -10,6 +13,8 @@ const userName = urlParams.get("name");
 const roomName = urlParams.get("room-name");
 const roomKey = urlParams.get("room-key");
 
+roomNameEl.textContent = roomName;
+roomKeyEl.textContent = roomKey;
 
 hamburgerEl.addEventListener("click", () => {
 	infoEl.classList.toggle("hidden");
@@ -57,4 +62,18 @@ socket.on("chat-msg", ({ msg, sender }) => {
 
 socket.on("system-msg", msg => {
 	makeSystemMsgEl(msg);
+});
+
+socket.on("get-members", members => {
+	const newMemberListEl = document.createElement("ul");
+	newMemberListEl.id = "members";
+	
+	members.forEach(member => {
+		const listItemEl = document.createElement("li");
+		listItemEl.textContent = member;
+		newMemberListEl.appendChild(listItemEl);
+	});
+	
+	memberListEl.parentNode.replaceChild(newMemberListEl, memberListEl);
+	memberListEl = newMemberListEl;
 });

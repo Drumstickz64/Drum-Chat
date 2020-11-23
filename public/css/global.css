@@ -24,11 +24,13 @@ body {
 	color: var(--text-clr);
 	height: 100vh;
 	overflow-x: hidden;
+	line-height: 1.5;
 }
 
 h1, h2, h3, h4 {
 	font-weight: 700;
 	color: var(--heading-clr);
+	line-height: 1.1;
 }
 
 a {

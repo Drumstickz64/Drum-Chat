@@ -33,11 +33,24 @@
 	padding: 0.25em 1em;
 }
 
+.info .content > * {
+	display: inline-block;
+}
+
+#members {
+	font-size: 1.2rem;
+}
+
+#members > li + li {
+	margin-bottom: 0.5em;
+}
+
 .chat-area {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
 	position: relative;
+	overflow-y: auto;
 }
 
 .chat-msg {
@@ -79,14 +92,14 @@
 }
 
 .chat-bar input {
-	flex-grow: 0.75;
+	flex-grow: 1;
 	padding: 0.25em 1em;
 	border: none;
 	background: rgba(238,238,238,0.5);
 }
 
 .chat-bar button {
-	flex-grow: 0.25;
+	flex-grow: 0;
 }
 
 .hidden {
